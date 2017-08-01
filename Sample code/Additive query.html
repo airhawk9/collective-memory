@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div>
+	<form>
+	<label for="searchBar">Search terms:</label>
+		<br>		
+		<input type="text" name="searchBar">
+		<br>
+	  <input type="submit" name="subSearch" value="Submit">
+	</form>
+	
+</div>
+<div id="results">
+	
+</div>
+
+<script>
+		var splitText = "";
+		var wholeQuery = [];
+		
+		document.getElementsByName("subSearch").addEventListener("click", searchTerms);
+		
+		function searchTerms(){
+		
+			splitText = document.getElementsByName("searchBar").value.split("+")
+		
+			for (i=0,i<splitText.length,i++){
+				
+				wholeQuery[i] = splitText[i].split("");
+				
+			}
+			
+			document.getElementById('results').innerHTML(wholeQuery);
+			
+		}
+		
+	</script>
+
+</body>
+</html>
