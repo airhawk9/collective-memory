@@ -10,21 +10,36 @@ body {
   font-size: 16pt; }
 
 form {
-  text-align: center; }
+  text-align: center;
+  bottom: 0px;
+  min-width: 135px;
+  margin: 3px; }
 
-#newSearch {
-  justify-self: center; }
+form input {
+  width: 130px;
+  height: 1.5em;
+  left: auto;
+  right: auto; }
 
 #addTerm {
   grid-column: 5;
   justify-self: center; }
 
 form button {
-  width: 100%; }
+  font-size: 20px;
+  font-family: 'Quicksand', sans-serif;
+  width: 135px;
+  height: auto;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  margin-top: 3px; }
 
 #queryTerms {
   grid-column: 5 / span 6;
   grid-row: 3; }
+
+#addTerm {
+  align-items: baseline; }
 
 #sTerms {
   grid-row: 2;
