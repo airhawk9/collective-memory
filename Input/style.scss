@@ -6,15 +6,38 @@ body {
 	display: grid;
 	grid-template-columns: 150px repeat(12, 1fr);
 	grid-gap: 10px;
-	grid-template-rows: 125px minmax(40px, auto) auto 30px;
+	grid-template-rows: 125px minmax(40px, auto) 1fr 30px;
+	grid-template-areas: "header header header header header header header header header header header header header " "suggestions termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched " "suggestions content content content content content content content content content content content content " "footer footer footer footer footer footer footer footer footer footer footer footer footer ";
 	grid-auto-flow: row;
 	font-size: 16pt;
+	height: 100vh;
+	grid-gap: 0px 0px;
+}
+
+#header {
+	grid-area: header;
+	background-color: dimgrey;
 }
 
 form {
 	bottom: 0px;
 	min-width: 135px;
 	margin: 3px;
+	text-align: center;
+	* {
+		margin-left: auto;
+		margin-right: auto;
+		align-self: center;
+	}
+	button {
+		font-size: 20px;
+		font-family: 'Quicksand', sans-serif;
+		width: 135px;
+		height: auto;
+		padding-bottom: 3px;
+		padding-top: 3px;
+		margin-top: 3px;
+	}
 }
 
 input {
@@ -23,21 +46,18 @@ input {
 	margin: auto;
 }
 
-#newSearch {}
+#footer {
+	background-color: gainsboro;
+	grid-area: footer;
+}
+
+.centered {
+	margin: auto;
+}
 
 #addTerm {
 	grid-column: 5;
 	justify-self: center;
-}
-
-form button {
-	font-size: 20px;
-	font-family: 'Quicksand', sans-serif;
-	width: 135px;
-	height: auto;
-	padding-bottom: 3px;
-	padding-top: 3px;
-	margin-top: 3px;
 }
 
 #queryTerms {
@@ -49,30 +69,24 @@ form button {
 	align-items: baseline;
 }
 
-form * {
-	margin-left: auto;
-	margin-right: auto;
-	align-self: center;
-}
-
 #sTerms {
-	grid-row: 2;
-	grid-column: 2 /span 12;
+	grid-area: content;
 	text-align: center;
 	font-size: 2em;
 }
 
 #sugTermsContainer {
 	background-color: darkgrey;
-	grid-row: 1;
+	grid-area: suggestions;
+	display: subgrid;
 	height: 100vh;
 	padding: 5px;
-	padding-top: 50px;
 	font-size: 12pt;
 }
 
 #sBar {
 	//the div that has both search bars
+	grid-area: termsSearched;
 	padding-top: 20px;
 	display: inherit;
 	grid-column: 5/10;

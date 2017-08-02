@@ -15,26 +15,36 @@
 	<div id="sBar">
 		<form id="newSearch" onkeypress="return event.keyCode != 13;" class="centered">
 			<label for="searchBar">Search terms:</label>
-			<br>
-			<input type="text" name="searchBar" onsubmit="false" value="harder better,faster,stronger">
-			<br>
+
+			<div class="centered">
+				<input type="text" name="searchBar" onsubmit="false" value="harder better,faster,stronger">
+			</div>
+
 			<button type="button" id="submitNewSearch">Submit</button>
 		</form>
 		<form id="addTerm" onkeypress="return event.keyCode != 13;" class="centered">
 			<label for='addTerms'>Add terms:</label>
-			<br>
-			<input name="addTerms" type="text" onsubmit="false" class="centered">
-			<br>
+
+			<div class="centered">
+				<input name="addTerms" type="text" onsubmit="false" class="centered">
+			</div>
+
 			<button type="button" id="addTermButt">Add Term</button>
 		</form>
 
 	</div>
 	<div id='sugTermsContainer'>
+		<div id='queryTerms'>
+
+		</div>
 		<form id="addClickBoxes" onkeypress="return event.keyCode != 13;">
 			<!--        attempt this function
             -->
 			<label for="testTerms">Testing add suggested terms</label>
-			<input type="text" id='addClickTerm' name="testTerms">
+			<div class="centered">
+				<input type="text" id='addClickTerm' name="testTerms">
+			</div>
+
 			<button type="button" id="makeSugButton">Make Suggestion</button>
 		</form>
 		<div id="sugTerms"></div>
@@ -43,9 +53,7 @@
 	<div id="sTerms">
 
 	</div>
-	<div id='queryTerms'>
 
-	</div>
 
 	<script>
 		//makes sure that the javascript starts after the page loads
@@ -106,6 +114,9 @@
 
 		}
 	</script>
+	<div id="header">
+	</div>
+	<div id="footer"></div>
 
 </body>
 
