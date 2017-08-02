@@ -7,16 +7,21 @@ body {
 	grid-template-columns: 150px repeat(12, 1fr);
 	grid-gap: 10px;
 	grid-template-rows: 125px minmax(40px, auto) 1fr 30px;
-	grid-template-areas: "header header header header header header header header header header header header header " "suggestions termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched " "suggestions content content content content content content content content content content content content " "footer footer footer footer footer footer footer footer footer footer footer footer footer ";
+	grid-template-areas: //
+	"header header header header header header header header header header header header header " //
+	"suggestions termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched " //
+	"suggestions content content content content content content content content content content content content " //
+	"footer footer footer footer footer footer footer footer footer footer footer footer footer ";
 	grid-auto-flow: row;
 	font-size: 16pt;
-	height: 100vh;
+	height: 100%;
 	grid-gap: 0px 0px;
 }
 
 #header {
 	grid-area: header;
 	background-color: dimgrey;
+	border-bottom: 2px solid black;
 }
 
 form {
@@ -82,6 +87,17 @@ input {
 	height: 100vh;
 	padding: 5px;
 	font-size: 12pt;
+}
+
+.line {
+	hr {
+		align-self: flex-end;
+		width: 100%;
+		height: 1px;
+	}
+	padding-left: 25px;
+	grid-area: termsSearched;
+	overflow: hidden;
 }
 
 #sBar {

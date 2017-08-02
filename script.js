@@ -29,7 +29,7 @@ function updateSearch() {
 			i++;
 		}
 		stringQuery += wholeQuery[i].join(' ');
-		document.getElementById('sTerms').innerText = stringQuery;
+		document.getElementById('termsDisplay').innerText = stringQuery;
 	}
 }
 
