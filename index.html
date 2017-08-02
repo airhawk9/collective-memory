@@ -13,17 +13,17 @@
 
 <body style="margin:0px">
 	<div id="sBar">
-		<form id="newSearch" onkeypress="return event.keyCode != 13;">
+		<form id="newSearch" onkeypress="return event.keyCode != 13;" class="centered">
 			<label for="searchBar">Search terms:</label>
 			<br>
 			<input type="text" name="searchBar" onsubmit="false" value="harder better,faster,stronger">
 			<br>
 			<button type="button" id="submitNewSearch">Submit</button>
 		</form>
-		<form id="addTerm" onkeypress="return event.keyCode != 13;">
+		<form id="addTerm" onkeypress="return event.keyCode != 13;" class="centered">
 			<label for='addTerms'>Add terms:</label>
 			<br>
-			<input name="addTerms" type="text" onsubmit="false">
+			<input name="addTerms" type="text" onsubmit="false" class="centered">
 			<br>
 			<button type="button" id="addTermButt">Add Term</button>
 		</form>

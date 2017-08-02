@@ -10,16 +10,14 @@ body {
   font-size: 16pt; }
 
 form {
-  text-align: center;
   bottom: 0px;
   min-width: 135px;
   margin: 3px; }
 
-form input {
-  width: 130px;
+input {
+  width: 129px;
   height: 1.5em;
-  left: auto;
-  right: auto; }
+  margin: auto; }
 
 #addTerm {
   grid-column: 5;
@@ -40,6 +38,11 @@ form button {
 
 #addTerm {
   align-items: baseline; }
+
+form * {
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center; }
 
 #sTerms {
   grid-row: 2;

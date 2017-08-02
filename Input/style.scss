@@ -12,17 +12,15 @@ body {
 }
 
 form {
-	text-align: center;
 	bottom: 0px;
 	min-width: 135px;
 	margin: 3px;
 }
 
-form input {
-	width: 130px;
+input {
+	width: 129px;
 	height: 1.5em;
-	left: auto;
-	right: auto;
+	margin: auto;
 }
 
 #newSearch {}
@@ -49,6 +47,12 @@ form button {
 
 #addTerm {
 	align-items: baseline;
+}
+
+form * {
+	margin-left: auto;
+	margin-right: auto;
+	align-self: center;
 }
 
 #sTerms {
