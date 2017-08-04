@@ -52,8 +52,7 @@ input {
   justify-self: center; }
 
 #queryTerms {
-  grid-column: 5 / span 6;
-  grid-row: 3; }
+  grid-area: suggestions; }
 
 #addTerm {
   align-items: baseline; }
@@ -66,7 +65,6 @@ input {
 #sugTermsContainer {
   background-color: darkgrey;
   grid-area: suggestions;
-  display: subgrid;
   height: 100vh;
   padding: 5px;
   font-size: 12pt; }
@@ -81,11 +79,11 @@ input {
     height: 1px; }
 
 #sBar {
-  grid-area: termsSearched;
   padding-top: 20px;
   display: inherit;
-  grid-column: 5/10;
-  align-self: end; }
+  grid-area: termsSearched;
+  justify-content: space-around;
+  padding-bottom: 10px; }
 
 .query {
   background-color: powderblue; }

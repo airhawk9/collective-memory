@@ -3,12 +3,12 @@ var totSuggestions = [];
 var deletedTerm;
 var stringQuery;
 
-function splitTerms() {
+function splitTerms(array) {
 	delQuery(false, totSearch);
 	//function run on submit that parses and splits terms into a JSON object
 	//grabs from search bar and puts that into wholeQuery 
 	//clears all divs  
-	splitText = document.getElementsByName("searchBar")[0].value.split(",");
+	splitText = array.split(",");
 
 	for (i = 0; i < splitText.length; i++) { //splits terms up between ',' signs 
 
@@ -42,6 +42,7 @@ function searchTerms() { //searches your combonation of terms from the wholeQuer
 
 	}
 	updateSearch();
+	document.getElementById('sTerms').setAttribute('style', "background-color: " + getRandomColor() + ';');
 
 }
 
@@ -94,7 +95,7 @@ function delQuery(self, list) {
 			totSearch = [];
 			wholeQuery = [];
 			splitText = '';
-			document.getElementById('sTerms').innerHTML = '';
+			document.getElementById('termsDisplay').innerHTML = '';
 
 		} else if (event.target == document.getElementById('submitNewSearch')) {
 			//
@@ -117,8 +118,6 @@ function delQuery(self, list) {
 		for (i = 0; i < list.length; i++) {
 			if (list[i] == event.target.parentElement) {
 				list[i].parentElement.removeChild(list[i]);
-			} else if (i == list.length) {
-				console.log('error in delQuery');
 			}
 		}
 
@@ -128,7 +127,7 @@ function delQuery(self, list) {
 	updateSearch();
 }
 
-function deliQuery(self, list) {
+/* function deliQuery(self, list) {
 	event.stopPropagation;
 	if (self == false) {
 		list = [];
@@ -136,9 +135,9 @@ function deliQuery(self, list) {
 	}
 
 
-}
+}*/
 
-function addTerms(term) { //adds one of the clickable suggestion boxes to the search
+function addTerms(term) { //adds a word to the search
 	var add = true;
 	var tempTerm = [];
 	if (deletedTerm == event.target) {
@@ -164,4 +163,13 @@ function addTerms(term) { //adds one of the clickable suggestion boxes to the se
 		}
 	}
 	searchTerms();
+}
+
+function getRandomColor() {
+	var letters = '0123456789ABCDEF';
+	var color = '#';
+	for (var i = 0; i < 6; i++) {
+		color += letters[Math.floor(Math.random() * 16)];
+	}
+	return color;
 }
