@@ -4,7 +4,7 @@ var deletedTerm;
 var stringQuery;
 
 function splitTerms(array) {
-	delQuery(false, totSearch);
+	deliQuery(false, totSearch);
 	//function run on submit that parses and splits terms into a JSON object
 	//grabs from search bar and puts that into wholeQuery 
 	//clears all divs  
@@ -19,6 +19,7 @@ function splitTerms(array) {
 }
 
 function updateSearch() {
+	//updates the area that displays what terms you've searched
 
 	stringQuery = "";
 	if (wholeQuery.length > 0) {
@@ -77,7 +78,7 @@ function makeDiv(term, location, list) {
 		removeIcon.setAttribute('style', 'float:right;display:inline;');
 
 		removeIcon.addEventListener("click", function () {
-			delQuery(true, list);
+			deliQuery(true, totSearch);
 		}, true); //sets remove icon 
 
 	}
@@ -127,15 +128,27 @@ function delQuery(self, list) {
 	updateSearch();
 }
 
-/* function deliQuery(self, list) {
+function deliQuery(self, list) {
 	event.stopPropagation;
 	if (self == false) {
-		list = [];
-		event.target.parentElement.parentElement.innerHTML = "";
+		while (list.length > 0) {
+			list[0].parentElement.removeChild(list[0]);
+			list.splice(0, 1);
+		}
+	} else {
+
+		for (i = 0; i < list.length; i++) {
+			if (list[i] == event.target.parentElement) {
+				list.splice(i, 1);
+				if (list == totSearch)
+					wholeQuery.splice(i, 1);
+			}
+		}
+		event.target.parentElement.parentElement.removeChild(event.target.parentElement);
 	}
-
-
-}*/
+	deletedTerm = event.target;
+	updateSearch();
+}
 
 function addTerms(term) { //adds a word to the search
 	var add = true;
@@ -160,9 +173,10 @@ function addTerms(term) { //adds a word to the search
 
 		if (add == true) {
 			wholeQuery.push(tempTerm);
+			event.target.parentElement.removeChild(event.target);
 		}
+		searchTerms();
 	}
-	searchTerms();
 }
 
 function getRandomColor() {

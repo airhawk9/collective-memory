@@ -1,3 +1,6 @@
+$headCl: #8cb3d9;
+$headBorder: #666699;
+$suggestionsCl: #000000;
 html {
 	font-family: 'Quicksand', sans-serif;
 }
@@ -20,8 +23,13 @@ body {
 
 #header {
 	grid-area: header;
-	background-color: dimgrey;
-	border-bottom: 2px solid black;
+	background-color: $headCl;
+	border-bottom: 2px solid $headBorder;
+}
+
+hr {
+	border-color: $headBorder;
+	background-color: $headBorder;
 }
 
 form {
@@ -29,6 +37,7 @@ form {
 	min-width: 135px;
 	margin: 3px;
 	text-align: center;
+	display: inline;
 	* {
 		margin-left: auto;
 		margin-right: auto;
@@ -60,10 +69,7 @@ input {
 	margin: auto;
 }
 
-#addTerm {
-	grid-column: 5;
-	justify-self: center;
-}
+#addTerm {}
 
 #queryTerms {
 	grid-area: suggestions;
