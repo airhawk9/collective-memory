@@ -1,7 +1,8 @@
 $headCl: #8cb3d9;
-$headBorder: #3a4b84;
 $suggestionsCl: #5d6ab1;
 $queryCl: #b3e6ff;
+$headBorder: darken($suggestionsCl,
+20%);
 html {
 	font-family: 'Quicksand', sans-serif;
 }
@@ -11,14 +12,10 @@ body {
 	grid-template-columns: 150px repeat(12, 1fr);
 	grid-gap: 10px;
 	grid-template-rows: 125px minmax(40px, auto) 1fr 30px;
-	grid-template-areas: 
-		//
-	"header header header header header header header header header header header header header " 
-		//
-	"suggestions termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched " 
-		//
-	"suggestions content content content content content content content content content content content content " 
-		//
+	grid-template-areas: //
+	"header header header header header header header header header header header header header " //
+	"suggestions termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched " //
+	"suggestions content content content content content content content content content content content content " //
 	"footer footer footer footer footer footer footer footer footer footer footer footer footer";
 	grid-auto-flow: row;
 	font-size: 16pt;
@@ -29,13 +26,16 @@ body {
 #header {
 	grid-area: header;
 	background-color: $headCl;
-	border-bottom: 2px solid $headBorder;
+	border-bottom: 3px solid $headBorder;
 }
 
 hr {
 	border-color: $headBorder;
 	background-color: $headBorder;
 	color: $headBorder;
+}
+#content {
+	grid-area: content;
 }
 
 form {

@@ -114,7 +114,7 @@ function addTerms(term) { //adds a word to the search
 	var tempTerm = [];
 	if (deletedTerm == event.target) {
 
-	} else if (term != "" && term != undefined && event.target.parentElement != document.getElementById("queryTerms")) {
+	} else if (term != "" && term != undefined && event.target.parentElement != document.getElementById("queryTerms") && term != 'undefined') {
 
 		for (i = 0; i < totSearch.length; i++) totSearch[i].parentElement.removeChild(totSearch[i]);
 
@@ -130,12 +130,28 @@ function addTerms(term) { //adds a word to the search
 
 
 		if (add == true) {
-			if (event.target.parentElement != document.getElementById("queryTerms") && event.target.parentElement.parentElement != document.getElementById('sBar'))
+			if (event.target.parentElement != document.getElementById("queryTerms") && event.target.parentElement.parentElement != document.getElementById('sBar') && event.target.isSameNode(document.createElement('button')))
 				event.target.parentElement.removeChild(event.target);
 			splitTerms(stringQuery + ',' + term);
-		}
-		updateSearch();
+		} else searchTerms();
+
 	}
+	updateSearch();
+
+}
+
+function populateContent(source, imageURL) {
+	var newDiv = document.createElement('div');
+	var newP = document.createElement('p');
+	var newImg = document.createElement('img');
+
+	newDiv.setAttribute('class', 'content');
+	newDiv.appendChild(newP);
+	newDiv.appendChild(newImg);
+	newP.setAttribute('src', 'source');
+	newImg.setAttribute('src', 'imageUrl');
+
+
 
 }
 

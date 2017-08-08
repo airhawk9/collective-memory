@@ -15,12 +15,15 @@ body {
 #header {
   grid-area: header;
   background-color: #8cb3d9;
-  border-bottom: 2px solid #3a4b84; }
+  border-bottom: 3px solid #374071; }
 
 hr {
-  border-color: #3a4b84;
-  background-color: #3a4b84;
-  color: #3a4b84; }
+  border-color: #374071;
+  background-color: #374071;
+  color: #374071; }
+
+#content {
+  grid-area: content; }
 
 form {
   bottom: 0px;
