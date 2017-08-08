@@ -6,7 +6,7 @@ body {
   grid-template-columns: 150px repeat(12, 1fr);
   grid-gap: 10px;
   grid-template-rows: 125px minmax(40px, auto) 1fr 30px;
-  grid-template-areas: "header header header header header header header header header header header header header " "suggestions termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched " "suggestions content content content content content content content content content content content content " "footer footer footer footer footer footer footer footer footer footer footer footer footer ";
+  grid-template-areas: "header header header header header header header header header header header header header " "suggestions termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched " "suggestions content content content content content content content content content content content content " "footer footer footer footer footer footer footer footer footer footer footer footer footer";
   grid-auto-flow: row;
   font-size: 16pt;
   height: 100%;
@@ -15,18 +15,19 @@ body {
 #header {
   grid-area: header;
   background-color: #8cb3d9;
-  border-bottom: 2px solid #666699; }
+  border-bottom: 2px solid #3a4b84; }
 
 hr {
-  border-color: #666699;
-  background-color: #666699; }
+  border-color: #3a4b84;
+  background-color: #3a4b84;
+  color: #3a4b84; }
 
 form {
   bottom: 0px;
   min-width: 135px;
+  justify-content: center;
   margin: 3px;
-  text-align: center;
-  display: inline; }
+  text-align: center; }
   form * {
     margin-left: auto;
     margin-right: auto;
@@ -38,7 +39,8 @@ form {
     height: auto;
     padding-bottom: 3px;
     padding-top: 3px;
-    margin-top: 3px; }
+    margin-top: 3px;
+    border-radius: 5px; }
 
 input {
   width: 129px;
@@ -50,23 +52,27 @@ input {
   grid-area: footer; }
 
 .centered {
-  margin: auto; }
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
+  .centered * {
+    text-align: center; }
 
 #queryTerms {
   grid-area: suggestions; }
 
 #addTerm {
-  align-items: baseline; }
+  align-items: baseline;
+  grid-row: 6; }
 
 #sTerms {
-  grid-area: content;
+  grid-area: termsSearched;
   text-align: center;
   font-size: 2em; }
 
 #sugTermsContainer {
-  background-color: darkgrey;
+  background-color: #5d6ab1;
   grid-area: suggestions;
-  height: 100vh;
   padding: 5px;
   font-size: 12pt; }
 
@@ -82,11 +88,11 @@ input {
 #sBar {
   padding-top: 20px;
   display: inherit;
-  grid-area: termsSearched;
+  grid-area: suggestions;
   justify-content: space-around;
   padding-bottom: 10px; }
 
 .query {
-  background-color: powderblue; }
+  background-color: #b3e6ff; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,6 +1,7 @@
 $headCl: #8cb3d9;
-$headBorder: #666699;
-$suggestionsCl: #000000;
+$headBorder: #3a4b84;
+$suggestionsCl: #5d6ab1;
+$queryCl: #b3e6ff;
 html {
 	font-family: 'Quicksand', sans-serif;
 }
@@ -10,11 +11,15 @@ body {
 	grid-template-columns: 150px repeat(12, 1fr);
 	grid-gap: 10px;
 	grid-template-rows: 125px minmax(40px, auto) 1fr 30px;
-	grid-template-areas: //
-	"header header header header header header header header header header header header header " //
-	"suggestions termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched " //
-	"suggestions content content content content content content content content content content content content " //
-	"footer footer footer footer footer footer footer footer footer footer footer footer footer ";
+	grid-template-areas: 
+		//
+	"header header header header header header header header header header header header header " 
+		//
+	"suggestions termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched " 
+		//
+	"suggestions content content content content content content content content content content content content " 
+		//
+	"footer footer footer footer footer footer footer footer footer footer footer footer footer";
 	grid-auto-flow: row;
 	font-size: 16pt;
 	height: 100%;
@@ -30,14 +35,15 @@ body {
 hr {
 	border-color: $headBorder;
 	background-color: $headBorder;
+	color: $headBorder;
 }
 
 form {
 	bottom: 0px;
 	min-width: 135px;
+	justify-content: center;
 	margin: 3px;
 	text-align: center;
-	display: inline;
 	* {
 		margin-left: auto;
 		margin-right: auto;
@@ -51,6 +57,7 @@ form {
 		padding-bottom: 3px;
 		padding-top: 3px;
 		margin-top: 3px;
+		border-radius: 5px;
 	}
 }
 
@@ -66,7 +73,12 @@ input {
 }
 
 .centered {
-	margin: auto;
+	* {
+		text-align: center;
+	}
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 }
 
 #addTerm {}
@@ -77,18 +89,18 @@ input {
 
 #addTerm {
 	align-items: baseline;
+	grid-row: 6;
 }
 
 #sTerms {
-	grid-area: content;
+	grid-area: termsSearched;
 	text-align: center;
 	font-size: 2em;
 }
 
 #sugTermsContainer {
-	background-color: darkgrey;
+	background-color: $suggestionsCl;
 	grid-area: suggestions;
-	height: 100vh;
 	padding: 5px;
 	font-size: 12pt;
 }
@@ -108,12 +120,12 @@ input {
 	//the div that has both search bars
 	padding-top: 20px;
 	display: inherit;
-	grid-area: termsSearched;
+	grid-area: suggestions;
 	justify-content: space-around;
 	padding-bottom: 10px;
 }
 
 .query {
 	//each term in its div
-	background-color: powderblue;
+	background-color: $queryCl;
 }

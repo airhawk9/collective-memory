@@ -12,34 +12,38 @@
 </head>
 
 <body style="margin:0px">
-	<div id="sBar">
-		<form id="newSearch" onkeypress="return event.keyCode != 13;" class="centered">
-			<label for="searchBar">Search terms:</label>
 
-			<div class="centered">
-				<input type="text" name="searchBar" onsubmit="false" value="harder better,faster,stronger">
-			</div>
-
-			<button type="button" id="submitNewSearch">Submit</button>
-		</form>
-		<form id="addTerm" onkeypress="return event.keyCode != 13;" class="centered">
-			<label for='addTerms'>Add terms:</label>
-
-			<div class="centered">
-				<input name="addTerms" type="text" onsubmit="false" class="centered">
-			</div>
-
-			<button type="button" id="addTermButt">Add Term</button>
-		</form>
-
-	</div>
 
 
 	<div id='sugTermsContainer'>
 		<div id='queryTerms'>
 
 		</div>
-		<form id="addClickBoxes" onkeypress="return event.keyCode != 13;">
+		<div id="sBar">
+
+			<form id="newSearch" onkeypress="return event.keyCode != 13;" class="centered">
+				<label for="searchBar">Search terms:</label>
+
+				<div class="centered">
+					<input type="text" name="searchBar" onsubmit="false" value="harder better,faster,stronger">
+				</div>
+
+				<button type="button" id="submitNewSearch">Submit</button>
+			</form>
+			<br>
+			<form id="addTerm" onkeypress="return event.keyCode != 13;" class="centered">
+				<label for='addTerms'>Add terms:</label>
+
+				<div class="centered">
+					<input name="addTerms" type="text" onsubmit="false" class="centered">
+				</div>
+
+				<button type="button" id="addTermButt">Add Term</button>
+			</form>
+
+		</div>
+
+		<form id="addClickBoxes" onkeypress="return event.keyCode != 13;" class="centered">
 			<label for="testTerms">Testing add suggested terms</label>
 			<div class="centered">
 				<input type="text" id='addClickTerm' name="testTerms">

@@ -3,12 +3,13 @@ var totSuggestions = [];
 var deletedTerm;
 var stringQuery;
 
-function splitTerms(array) {
+function splitTerms(search) {
 	deliQuery(false, totSearch);
+	wholeQuery = [];
 	//function run on submit that parses and splits terms into a JSON object
 	//grabs from search bar and puts that into wholeQuery 
 	//clears all divs  
-	splitText = array.split(",");
+	splitText = search.split(',')
 
 	for (i = 0; i < splitText.length; i++) { //splits terms up between ',' signs 
 
@@ -31,6 +32,8 @@ function updateSearch() {
 		}
 		stringQuery += wholeQuery[i].join(' ');
 		document.getElementById('termsDisplay').innerText = stringQuery;
+	} else {
+		document.getElementById('termsDisplay').innerText = '';
 	}
 }
 
@@ -84,50 +87,6 @@ function makeDiv(term, location, list) {
 	}
 }
 
-function delQuery(self, list) {
-	event.stopPropagation;
-	//if self is ture it deletes itself and renumbers the divs
-	//if false it deletes the entire list
-
-	if (list == totSearch) {
-
-		if (self == false || wholeQuery.length == 1) {
-			document.getElementById('queryTerms').innerHTML = '';
-			totSearch = [];
-			wholeQuery = [];
-			splitText = '';
-			document.getElementById('termsDisplay').innerHTML = '';
-
-		} else if (event.target == document.getElementById('submitNewSearch')) {
-			//
-		} else {
-			var i = 0;
-			while (event.currentTarget.parentElement != totSearch[i]) {
-
-				i++;
-			}
-
-			wholeQuery.splice(i, 1);
-
-			totSearch = [];
-			document.getElementById('queryTerms').innerHTML = ""
-			updateSearch();
-		}
-	} //
-	// 
-	else if (list == totSuggestions) {
-		for (i = 0; i < list.length; i++) {
-			if (list[i] == event.target.parentElement) {
-				list[i].parentElement.removeChild(list[i]);
-			}
-		}
-
-
-	}
-	deletedTerm = event.target;
-	updateSearch();
-}
-
 function deliQuery(self, list) {
 	event.stopPropagation;
 	if (self == false) {
@@ -154,13 +113,12 @@ function addTerms(term) { //adds a word to the search
 	var add = true;
 	var tempTerm = [];
 	if (deletedTerm == event.target) {
-		deletedTerm = "";
-	} else if (term != "" && term != undefined) {
+
+	} else if (term != "" && term != undefined && event.target.parentElement != document.getElementById("queryTerms")) {
 
 		for (i = 0; i < totSearch.length; i++) totSearch[i].parentElement.removeChild(totSearch[i]);
 
 		totSearch = []; //removes the previous search items
-		tempTerm[0] = term;
 		//	if (typeof term != typeof "") term = event.target.firstElementChild.innerHTML.split(' ');
 
 
@@ -172,11 +130,13 @@ function addTerms(term) { //adds a word to the search
 
 
 		if (add == true) {
-			wholeQuery.push(tempTerm);
-			event.target.parentElement.removeChild(event.target);
+			if (event.target.parentElement != document.getElementById("queryTerms") && event.target.parentElement.parentElement != document.getElementById('sBar'))
+				event.target.parentElement.removeChild(event.target);
+			splitTerms(stringQuery + ',' + term);
 		}
-		searchTerms();
+		updateSearch();
 	}
+
 }
 
 function getRandomColor() {
