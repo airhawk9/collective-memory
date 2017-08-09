@@ -7,10 +7,13 @@ body {
   grid-gap: 10px;
   grid-template-rows: 125px minmax(40px, auto) 1fr 30px;
   grid-template-areas: "header header header header header header header header header header header header header " "suggestions termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched termsSearched " "suggestions content content content content content content content content content content content content " "footer footer footer footer footer footer footer footer footer footer footer footer footer";
-  grid-auto-flow: row;
+  grid-auto-flow: column;
   font-size: 16pt;
   height: 100%;
   grid-gap: 0px 0px; }
+
+.borderRad {
+  border-radius: 15px; }
 
 #header {
   grid-area: header;
@@ -23,7 +26,21 @@ hr {
   color: #374071; }
 
 #content {
-  grid-area: content; }
+  grid-area: content;
+  display: grid;
+  grid-template-columns: 25px repeat(3, 1fr) 25px;
+  padding: 10px;
+  position: relative;
+  grid-auto-flow: row; }
+
+.content {
+  grid-column: 2 / span 3;
+  border: 2px solid black; }
+  .content img {
+    width: 50px;
+    padding: 5px;
+    padding: 5px;
+    padding: 5px; }
 
 form {
   bottom: 0px;
@@ -43,7 +60,9 @@ form {
     padding-bottom: 3px;
     padding-top: 3px;
     margin-top: 3px;
-    border-radius: 5px; }
+    border: 0px;
+    border-left: 2px solid white;
+    border-top: 2px solid white; }
 
 input {
   width: 129px;

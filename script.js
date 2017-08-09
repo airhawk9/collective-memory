@@ -2,6 +2,8 @@ var totSearch = [];
 var totSuggestions = [];
 var deletedTerm;
 var stringQuery;
+var contentRow = 0;
+var contentItems = [];
 
 function splitTerms(search) {
 	deliQuery(false, totSearch);
@@ -47,7 +49,7 @@ function searchTerms() { //searches your combonation of terms from the wholeQuer
 	}
 	updateSearch();
 	document.getElementById('sTerms').setAttribute('style', "background-color: " + getRandomColor() + ';');
-
+	populateContent();
 }
 
 function makeDiv(term, location, list) {
@@ -140,19 +142,39 @@ function addTerms(term) { //adds a word to the search
 
 }
 
-function populateContent(source, imageURL) {
+function populateContent( /*source, imageURL*/ ) { //displays the search results with a preview of content available
+	var source = '';
+	var imageURL = "test_assets/test.jpg";
 	var newDiv = document.createElement('div');
 	var newP = document.createElement('p');
 	var newImg = document.createElement('img');
+	var removeIcon = document.createElement('I');
 
-	newDiv.setAttribute('class', 'content');
+	contentRow++; //adds as many rows as there is content
+	newDiv.setAttribute('class', 'content borderRad');
 	newDiv.appendChild(newP);
 	newDiv.appendChild(newImg);
+
+	//newImg.setAttribute('src', 'imageUrl');
+	newImg.src = imageURL;
 	newP.setAttribute('src', 'source');
-	newImg.setAttribute('src', 'imageUrl');
+
+	document.getElementById('content').setAttribute('style', 'grid-template-rows: repeat(' + contentRow + ', auto);');
+	document.getElementById('content').appendChild(newDiv);
+	contentItems.push(newDiv);
 
 
 
+
+}
+
+function clearContent(delSelf) {
+
+	for (i = 0; i < contentItems.length; i++) {
+		document.getElementById('content').removeChild(contentItems[i]);
+	}
+	contentItems = [];
+	contentRow = 0;
 }
 
 function getRandomColor() {
