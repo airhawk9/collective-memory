@@ -51,15 +51,14 @@ hr {
 .content {
 	grid-column: 2 / span 3;
 	border: 2px solid black;
+	padding: 5px;
 	img {
-		width: 50px;
-		padding: 5px;
-		padding: 5px;
+		width: 150px;
 		padding: 5px;
 	}
 }
 
-form {
+.searches {
 	bottom: 0px;
 	min-width: 135px;
 	justify-content: center;

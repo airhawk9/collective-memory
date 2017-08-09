@@ -44,19 +44,18 @@ function searchTerms() { //searches your combonation of terms from the wholeQuer
 
 	for (i = 0; i < wholeQuery.length; i++) { //splits terms by spaces
 
-		makeDiv(wholeQuery[i].join(' '), 'queryTerms', totSearch);
+		makeRemoveIcon(makeDiv(wholeQuery[i].join(' '), 'queryTerms', totSearch), totSearch);
 
 	}
 	updateSearch();
 	document.getElementById('sTerms').setAttribute('style', "background-color: " + getRandomColor() + ';');
-	populateContent();
+	makeRemoveIcon(populateContent(), contentItems);
 }
 
 function makeDiv(term, location, list) {
 	term = term.replace(/(\r\n|\n|\r)/gm, "");
 
 	var newDiv = document.createElement("DIV");
-	var removeIcon = document.createElement('I');
 
 	if (term == "") {} else {
 
@@ -73,20 +72,27 @@ function makeDiv(term, location, list) {
 		newDiv.innerHTML = term; //sets the text boxes to that of the search
 		newDiv.setAttribute('class', "query"); //sets up class for CSS
 		newDiv.setAttribute('style', 'margin:3px;padding:3px;border-radius:5px;border:1px solid;overflow:hidden;display:flex;justify-content: space-between;');
-		newDiv.appendChild(removeIcon);
 
 
 
 
-		removeIcon.setAttribute('class', 'fa fa-minus-square');
-		removeIcon.setAttribute('aria-hidden', 'true');
-		removeIcon.setAttribute('style', 'float:right;display:inline;');
 
-		removeIcon.addEventListener("click", function () {
-			deliQuery(true, totSearch);
-		}, true); //sets remove icon 
+
 
 	}
+	return newDiv;
+}
+
+function makeRemoveIcon(div, list) {
+	var removeIcon = document.createElement('I');
+	removeIcon.setAttribute('class', 'fa fa-minus-square');
+	removeIcon.setAttribute('aria-hidden', 'true');
+	removeIcon.setAttribute('style', 'float:right;display:inline;');
+	div.appendChild(removeIcon);
+	removeIcon.addEventListener("click", function () {
+		deliQuery(true, list);
+	}, true); //sets remove icon 
+
 }
 
 function deliQuery(self, list) {
@@ -144,7 +150,7 @@ function addTerms(term) { //adds a word to the search
 
 function populateContent( /*source, imageURL*/ ) { //displays the search results with a preview of content available
 	var source = '';
-	var imageURL = "test_assets/test.jpg";
+	imageURL = "test_assets/test2.jpg";
 	var newDiv = document.createElement('div');
 	var newP = document.createElement('p');
 	var newImg = document.createElement('img');
@@ -155,15 +161,13 @@ function populateContent( /*source, imageURL*/ ) { //displays the search results
 	newDiv.appendChild(newP);
 	newDiv.appendChild(newImg);
 
-	//newImg.setAttribute('src', 'imageUrl');
 	newImg.src = imageURL;
 	newP.setAttribute('src', 'source');
 
 	document.getElementById('content').setAttribute('style', 'grid-template-rows: repeat(' + contentRow + ', auto);');
 	document.getElementById('content').appendChild(newDiv);
 	contentItems.push(newDiv);
-
-
+	return newDiv;
 
 
 }

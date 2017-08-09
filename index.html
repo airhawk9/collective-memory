@@ -21,7 +21,7 @@
 		</div>
 		<div id="sBar">
 
-			<form id="newSearch" onkeypress="return event.keyCode != 13;" class="centered">
+			<form id="newSearch" onkeypress="return event.keyCode != 13;" class="centered searches">
 				<label for="searchBar">Search terms:</label>
 
 				<div class="centered">
@@ -31,7 +31,7 @@
 				<button type="button" id="submitNewSearch" class="borderRad">Submit</button>
 			</form>
 			<br>
-			<form id="addTerm" onkeypress="return event.keyCode != 13;" class="centered">
+			<form id="addTerm" onkeypress="return event.keyCode != 13;" class="centered searches">
 				<label for='addTerms'>Add terms:</label>
 
 				<div class="centered">
@@ -43,7 +43,7 @@
 
 		</div>
 
-		<form id="addClickBoxes" onkeypress="return event.keyCode != 13;" class="centered">
+		<form id="addClickBoxes" onkeypress="return event.keyCode != 13;" class="centered searches">
 			<label for="testTerms">Testing add suggested terms</label>
 			<div class="centered">
 				<input type="text" id='addClickTerm' name="testTerms">
@@ -80,7 +80,7 @@
 			addTerms(document.getElementsByName('addTerms')[0].value);
 		});
 		document.getElementById('makeSugButton').addEventListener('click', function () {
-			makeDiv(document.getElementById('addClickTerm').value, 'sugTerms', totSuggestions);
+			makeRemoveIcon(makeDiv(document.getElementById('addClickTerm').value, 'sugTerms', totSuggestions), totSuggestions);
 			document.getElementById('addClickTerm').value = "";
 		})
 
@@ -101,16 +101,16 @@
 
 		document.getElementById('addClickBoxes').onkeydown = function (event) {
 			if (event.keyCode == 13) {
-				makeDiv(document.getElementById('addClickTerm').value, 'sugTerms', totSuggestions);
+				makeRemoveIcon(makeDiv(document.getElementById('addClickTerm').value, 'sugTerms', totSuggestions), totSuggestions);
 				document.getElementById('addClickTerm').value = "";
 			}
 
 		}
 		document.getElementById("populate").addEventListener("click", function () {
-			populateContent()
+			makeRemoveIcon(populateContent(), contentItems);
 		});
 		document.getElementById("clearContent").addEventListener("click", function () {
-			clearContent()
+			clearContent();
 		});
 	</script>
 	<div id="header">
