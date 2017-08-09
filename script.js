@@ -49,6 +49,7 @@ function searchTerms() { //searches your combonation of terms from the wholeQuer
 	}
 	updateSearch();
 	document.getElementById('sTerms').setAttribute('style', "background-color: " + getRandomColor() + ';');
+	clearContent();
 	makeRemoveIcon(populateContent(), contentItems);
 }
 
@@ -164,8 +165,8 @@ function populateContent( /*source, imageURL*/ ) { //displays the search results
 	newImg.src = imageURL;
 	newP.setAttribute('src', 'source');
 
-	document.getElementById('content').setAttribute('style', 'grid-template-rows: repeat(' + contentRow + ', auto);');
-	document.getElementById('content').appendChild(newDiv);
+	document.getElementById('contentWrapper').setAttribute('style', 'grid-template-rows: repeat(' + contentRow + ', auto);');
+	document.getElementById('contentWrapper').appendChild(newDiv);
 	contentItems.push(newDiv);
 	return newDiv;
 
@@ -175,7 +176,7 @@ function populateContent( /*source, imageURL*/ ) { //displays the search results
 function clearContent(delSelf) {
 
 	for (i = 0; i < contentItems.length; i++) {
-		document.getElementById('content').removeChild(contentItems[i]);
+		document.getElementById('contentWrapper').removeChild(contentItems[i]);
 	}
 	contentItems = [];
 	contentRow = 0;
