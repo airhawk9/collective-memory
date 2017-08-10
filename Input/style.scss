@@ -21,9 +21,8 @@ body {
 	font-size: 16pt;
 	height: 100%;
 	grid-gap: 0px 0px;
+	margin: 0px;
 }
-
-
 
 #header {
 	grid-area: header;
@@ -35,6 +34,7 @@ body {
 	background-color: gainsboro;
 	grid-area: footer;
 }
+
 #contentWrapper {
 	grid-area: content;
 	display: grid;
@@ -42,6 +42,52 @@ body {
 	padding: 10px;
 	position: relative;
 	grid-auto-flow: row;
+}
+
+#title {
+	font-size: 55px;
+}
+
+#queryTerms {
+	grid-area: suggestions;
+}
+
+#addTerm {
+	align-items: baseline;
+	grid-row: 6;
+}
+
+#sTerms {
+	grid-area: termsSearched;
+	text-align: center;
+	font-size: 2em;
+}
+
+#sugTermsContainer {
+	background-color: $suggestionsCl;
+	grid-area: suggestions;
+	padding: 5px;
+	font-size: 12pt;
+}
+
+#axisDrag {
+	border: 2px solid black;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	left: 50vw;
+	display: grid;
+	grid: column 200px /200px;
+	grid-gap: 10px;
+}
+
+#axisWrapper {
+	position: absolute;
+	overflow: hidden;
+	height: 200vh;
+	width: 200vw;
+	left: -50vw;
+	top: -50vh;
 }
 
 .content {
@@ -94,42 +140,14 @@ input {
 	text-align: center;
 }
 
-#addTerm {}
-
-#title {
-	font-size: 55px;
-}
-
-#queryTerms {
-	grid-area: suggestions;
-}
-
-#addTerm {
-	align-items: baseline;
-	grid-row: 6;
-}
-
-#sTerms {
-	grid-area: termsSearched;
-	text-align: center;
-	font-size: 2em;
-}
-
-#sugTermsContainer {
-	background-color: $suggestionsCl;
-	grid-area: suggestions;
-	padding: 5px;
-	font-size: 12pt;
-}
-
 .line {
 	hr {
 		align-self: flex-end;
 		width: 100%;
 		height: 1px;
-	border-color: $headBorder;
-	background-color: $headBorder;
-	color: $headBorder;
+		border-color: $headBorder;
+		background-color: $headBorder;
+		color: $headBorder;
 	}
 	padding-left: 25px;
 	grid-area: termsSearched;
@@ -149,6 +167,7 @@ input {
 	//each term in its div
 	background-color: $queryCl;
 }
+
 .borderRad {
 	border-radius: 15px;
 }

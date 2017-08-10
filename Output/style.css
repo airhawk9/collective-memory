@@ -10,7 +10,8 @@ body {
   grid-auto-flow: column;
   font-size: 16pt;
   height: 100%;
-  grid-gap: 0px 0px; }
+  grid-gap: 0px 0px;
+  margin: 0px; }
 
 #header {
   grid-area: header;
@@ -28,6 +29,45 @@ body {
   padding: 10px;
   position: relative;
   grid-auto-flow: row; }
+
+#title {
+  font-size: 55px; }
+
+#queryTerms {
+  grid-area: suggestions; }
+
+#addTerm {
+  align-items: baseline;
+  grid-row: 6; }
+
+#sTerms {
+  grid-area: termsSearched;
+  text-align: center;
+  font-size: 2em; }
+
+#sugTermsContainer {
+  background-color: #5d6ab1;
+  grid-area: suggestions;
+  padding: 5px;
+  font-size: 12pt; }
+
+#axisDrag {
+  border: 2px solid black;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  left: 50vw;
+  display: grid;
+  grid: column 200px /200px;
+  grid-gap: 10px; }
+
+#axisWrapper {
+  position: absolute;
+  overflow: hidden;
+  height: 200vh;
+  width: 200vw;
+  left: -50vw;
+  top: -50vh; }
 
 .content {
   grid-column: 2 / span 3;
@@ -70,27 +110,6 @@ input {
   text-align: center; }
   .centered * {
     text-align: center; }
-
-#title {
-  font-size: 55px; }
-
-#queryTerms {
-  grid-area: suggestions; }
-
-#addTerm {
-  align-items: baseline;
-  grid-row: 6; }
-
-#sTerms {
-  grid-area: termsSearched;
-  text-align: center;
-  font-size: 2em; }
-
-#sugTermsContainer {
-  background-color: #5d6ab1;
-  grid-area: suggestions;
-  padding: 5px;
-  font-size: 12pt; }
 
 .line {
   padding-left: 25px;
