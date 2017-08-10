@@ -14,6 +14,7 @@ function drag(ev) {
 	style = window.getComputedStyle(ev.target, null);
 	str = (parseInt(style.getPropertyValue("left")) - ev.clientX) + ',' + (parseInt(style.getPropertyValue("top")) - ev.clientY) + ',' + ev.target.id;
 	ev.dataTransfer.setData("Text", str);
+	coordinates = [[ev.clientX, ev.clientY]];
 	coordinates[1] = [ev.clientX, ev.clientY];
 }
 
@@ -46,9 +47,9 @@ function folder() {
 function slide(ev) {
 	if (speedMultiplier == 1) {
 		var startMulti = .3;
-		speedX = (coordinates[10][0] - coordinates[0][0]) * startMulti;
+		speedX = (coordinates[coordinates.length - 1][0] - coordinates[0][0]) * startMulti;
 		posX = parseInt(dm.style.left, 10);
-		speedY = (coordinates[10][1] - coordinates[0][1]) * startMulti;
+		speedY = (coordinates[coordinates.length - 1][1] - coordinates[0][1]) * startMulti;
 		posY = parseInt(dm.style.top, 10);
 	}
 	posX += speedX;
