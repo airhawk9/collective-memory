@@ -1,19 +1,29 @@
-var coordinates = [[0, 0]];
+var coordinates = [[0.0, 0.0]];
+var aniID;
+var speedX;
+var posX;
+var speedY;
+var posY;
+var str;
+var speedMultiplier = 1; // percent of speedX/Y reduced, compared to percent off
+var percentOff = 0.8; //multiplier between ticks
+var style;
+var offset;
 
 function drag(ev) {
-	var style = window.getComputedStyle(ev.target, null);
-	var str = (parseInt(style.getPropertyValue("left")) - ev.clientX) + ',' + (parseInt(style.getPropertyValue("top")) - ev.clientY) + ',' + ev.target.id;
+	style = window.getComputedStyle(ev.target, null);
+	str = (parseInt(style.getPropertyValue("left")) - ev.clientX) + ',' + (parseInt(style.getPropertyValue("top")) - ev.clientY) + ',' + ev.target.id;
 	ev.dataTransfer.setData("Text", str);
 	coordinates[1] = [ev.clientX, ev.clientY];
 }
 
 function drop(ev) {
-	var offset = event.dataTransfer.getData("Text").split(',');
-	var dm = document.getElementById(offset[2]);
+	offset = event.dataTransfer.getData("Text").split(',');
+	dm = document.getElementById(offset[2]);
 	dm.style.left = (ev.clientX + parseInt(offset[0], 10)) + 'px';
 	dm.style.top = (ev.clientY + parseInt(offset[1], 10)) + 'px';
 	ev.preventDefault();
-	slide();
+	slide(ev);
 	return false;
 }
 
@@ -33,6 +43,29 @@ function folder() {
 
 }
 
-function slide() {
+function slide(ev) {
+	if (speedMultiplier == 1) {
+		var startMulti = .3;
+		speedX = (coordinates[10][0] - coordinates[0][0]) * startMulti;
+		posX = parseInt(dm.style.left, 10);
+		speedY = (coordinates[10][1] - coordinates[0][1]) * startMulti;
+		posY = parseInt(dm.style.top, 10);
+	}
+	posX += speedX;
+	posY += speedY;
+	dm.style.left = posX + 'px';
+	dm.style.top = posY + 'px';
+
+	speedX *= percentOff;
+	speedY *= percentOff;
+	speedMultiplier *= percentOff;
+	if (speedMultiplier < .1) {
+		cancelAnimationFrame(aniID);
+		speedMultiplier = 1;
+	} else {
+		aniID = requestAnimationFrame(slide);
+
+	}
+
 
 }
