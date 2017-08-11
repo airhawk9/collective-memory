@@ -1,0 +1,20 @@
+#axisWrapper {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	overflow: hidden;
+	background-image: url('http://cdn.osxdaily.com/wp-content/uploads/2013/07/dancing-banana.gif');
+	background-repeat: repeat;
+}
+
+#axisDrag {
+	position: relative;
+	width: 400px;
+	height: 400px;
+	background-color: rgba(205, 92, 92, 0.47);
+}
+
+body {
+	padding: 0px;
+	margin: 0px;
+}

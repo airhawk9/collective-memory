@@ -151,7 +151,7 @@ function addTerms(term) { //adds a word to the search
 
 function populateContent( /*source, imageURL*/ ) { //displays the search results with a preview of content available
 	var source = '';
-	imageURL = "test_assets/test2.jpg";
+	imageURL = "/test_assets/test2.jpg";
 	var newDiv = document.createElement('div');
 	var newP = document.createElement('p');
 	var newImg = document.createElement('img');
@@ -165,7 +165,6 @@ function populateContent( /*source, imageURL*/ ) { //displays the search results
 	newImg.src = imageURL;
 	newP.setAttribute('src', 'source');
 
-	document.getElementById('contentWrapper').setAttribute('style', 'grid-template-rows: repeat(' + contentRow + ', auto);');
 	document.getElementById('contentWrapper').appendChild(newDiv);
 	contentItems.push(newDiv);
 	return newDiv;
