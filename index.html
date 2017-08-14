@@ -20,7 +20,6 @@
 
 		</div>
 		<div id="sBar">
-
 			<form id="newSearch" onkeypress="return event.keyCode != 13;" class="centered searches">
 				<label for="searchBar">Search terms:</label>
 
@@ -30,7 +29,9 @@
 
 				<button type="button" id="submitNewSearch" class="borderRad">Submit</button>
 			</form>
+
 			<br>
+
 			<form id="addTerm" onkeypress="return event.keyCode != 13;" class="centered searches">
 				<label for='addTerms'>Add terms:</label>
 
@@ -40,25 +41,28 @@
 
 				<button type="button" id="addTermButt" class="borderRad">Add Term</button>
 			</form>
-
 		</div>
 
 		<form id="addClickBoxes" onkeypress="return event.keyCode != 13;" class="centered searches">
 			<label for="testTerms">Testing add suggested terms</label>
+
 			<div class="centered">
 				<input type="text" id='addClickTerm' name="testTerms">
 			</div>
 
 			<button type="button" id="makeSugButton" class="borderRad">Make Suggestion</button>
 		</form>
-		<div id="sugTerms"></div>
 
+		<div id="sugTerms"></div>
 	</div>
+
 	<div id="sTerms">
 		<div id="termsDisplay"></div>
+
 		<div class="line">
 			<hr noshade="noshade">
 		</div>
+
 		<button id="populate">Populate!</button>
 		<button id="clearContent">Clear!</button>
 
@@ -73,6 +77,7 @@
 		var splitText = "";
 		var wholeQuery = []; //text of the search
 
+		//event listeners are being added
 		document.getElementById("submitNewSearch").addEventListener("click", function () {
 			splitTerms(document.getElementsByName("searchBar")[0].value);
 		});
@@ -84,21 +89,19 @@
 			document.getElementById('addClickTerm').value = "";
 		})
 
-
+		// sets the enter to not refressh the page but instead start the javascript
 		document.getElementById('newSearch').onkeydown = function (event) {
 			if (event.keyCode == 13) {
 				splitTerms(document.getElementsByName("searchBar")[0].value);
 			}
 
 		}
-
 		document.getElementById('addTerm').onkeydown = function (event) {
 			if (event.keyCode == 13) {
 				addTerms(document.getElementsByName('addTerms')[0].value);
 
 			}
 		}
-
 		document.getElementById('addClickBoxes').onkeydown = function (event) {
 			if (event.keyCode == 13) {
 				makeRemoveIcon(makeDiv(document.getElementById('addClickTerm').value, 'sugTerms', totSuggestions), totSuggestions);
@@ -106,6 +109,8 @@
 			}
 
 		}
+
+		//more event listeners
 		document.getElementById("populate").addEventListener("click", function () {
 			makeRemoveIcon(populateContent(), contentItems);
 		});

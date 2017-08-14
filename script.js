@@ -1,9 +1,22 @@
-var totSearch = [];
-var totSuggestions = [];
-var deletedTerm;
-var stringQuery;
-var contentRow = 0;
-var contentItems = [];
+var totSearch = []; //stores the divs that the search terms are displayed in for deletion
+var totSuggestions = []; //stores the divs that the suggested terms are displayed in for deletion
+var deletedTerm; // remembers the last term deleted for buy fix purposes
+var stringQuery; // the query represented as a string
+var contentItems = []; //stores the divs that the content item are displayed in for deletion purposes
+
+/*
+this is the main javascript file run on every page
+allows the capturing of the users choice of search terms and easy editing of the query
+
+
+
+*******SPLIT TERMS**********
+
+Split terms takes the search parameter (in string form) and parses 
+the string out between spaces and commas, spaces seperating words
+and commas seperating phrases. It then runs the search terms function to create the divs
+*/
+
 
 function splitTerms(search) {
 	deliQuery(false, totSearch);
@@ -21,8 +34,15 @@ function splitTerms(search) {
 	searchTerms();
 }
 
+/*
+*********UPDATE SEARCH***********
+
+Refreshes the search display from the wholeQuery variable 
+and updates the stringQuery variable in the document
+
+*/
+
 function updateSearch() {
-	//updates the area that displays what terms you've searched
 
 	stringQuery = "";
 	if (wholeQuery.length > 0) {
@@ -39,7 +59,14 @@ function updateSearch() {
 	}
 }
 
-function searchTerms() { //searches your combonation of terms from the wholeQuery variable
+/*
+*********SEARCH TERMS**********
+
+Creates the divs from the whole query variable 
+clears the previous terms
+*/
+
+function searchTerms() {
 
 
 	for (i = 0; i < wholeQuery.length; i++) { //splits terms by spaces
@@ -53,6 +80,15 @@ function searchTerms() { //searches your combonation of terms from the wholeQuer
 	makeRemoveIcon(populateContent(), contentItems);
 }
 
+/*
+********MAKE DIV**********
+
+Makes a div with a term, location, and list
+the term is displayed in the div
+the location is what div it will be placed in
+the list is what list stores it's location for deletion
+*/
+
 function makeDiv(term, location, list) {
 	term = term.replace(/(\r\n|\n|\r)/gm, "");
 
@@ -64,8 +100,6 @@ function makeDiv(term, location, list) {
 
 		list.push(newDiv);
 
-
-
 		newDiv.addEventListener('click', function () {
 			addTerms(event.target.innerText.replace(/\r?\n|\r/, "").split(' '));
 		});
@@ -74,15 +108,17 @@ function makeDiv(term, location, list) {
 		newDiv.setAttribute('class', "query"); //sets up class for CSS
 		newDiv.setAttribute('style', 'margin:3px;padding:3px;border-radius:5px;border:1px solid;overflow:hidden;display:flex;justify-content: space-between;');
 
-
-
-
-
-
-
 	}
 	return newDiv;
 }
+
+/*
+*********MAKE REMOVE ICON**********
+
+adds a remove icon to an element
+stores that element in a list for deletion
+actual deletion function is deliQuery
+*/
 
 function makeRemoveIcon(div, list) {
 	var removeIcon = document.createElement('I');
@@ -95,6 +131,14 @@ function makeRemoveIcon(div, list) {
 	}, true); //sets remove icon 
 
 }
+
+/*
+***********DELI QUERY**********
+
+delete function for any lists of elements
+can delete itself or a whole array
+list refers to the list that the element was stored in
+*/
 
 function deliQuery(self, list) {
 	event.stopPropagation;
@@ -117,6 +161,14 @@ function deliQuery(self, list) {
 	deletedTerm = event.target;
 	updateSearch();
 }
+
+/*
+**********ADD TERMS***********
+
+adds a term to the query
+called in the suggestion boxes and the add term button
+always adds to the whole query variable and updates the search
+*/
 
 function addTerms(term) { //adds a word to the search
 	var add = true;
@@ -149,7 +201,15 @@ function addTerms(term) { //adds a word to the search
 
 }
 
-function populateContent( /*source, imageURL*/ ) { //displays the search results with a preview of content available
+/*
+*********POPULATE CONNTENT***********
+
+adds a content div
+has an image and text
+will have an <a> tag and link to the full page as this just displays a short excerpt
+*/
+
+function populateContent( /*source, imageURL*/ ) {
 	var source = '';
 	imageURL = "/test_assets/test2.jpg";
 	var newDiv = document.createElement('div');
@@ -157,7 +217,6 @@ function populateContent( /*source, imageURL*/ ) { //displays the search results
 	var newImg = document.createElement('img');
 	var removeIcon = document.createElement('I');
 
-	contentRow++; //adds as many rows as there is content
 	newDiv.setAttribute('class', 'content borderRad');
 	newDiv.appendChild(newP);
 	newDiv.appendChild(newImg);
@@ -172,14 +231,24 @@ function populateContent( /*source, imageURL*/ ) { //displays the search results
 
 }
 
+/*
+**********CLEAR CONTENT**********
+clears the content completely
+might be able to switch to deli query
+*/
+
 function clearContent(delSelf) {
 
 	for (i = 0; i < contentItems.length; i++) {
 		document.getElementById('contentWrapper').removeChild(contentItems[i]);
 	}
 	contentItems = [];
-	contentRow = 0;
 }
+
+/*
+*********GET RANDOM COLOR*********
+makes a random color
+*/
 
 function getRandomColor() {
 	var letters = '0123456789ABCDEF';
